@@ -1,0 +1,35 @@
+# data config
+dataset: pubmed
+split: train
+max_token_length: 1024
+subset_examples: 1000
+
+# model config
+model: meta-llama/Llama-2-7b-hf
+lora:
+  r: 8
+  lora_alpha: 16
+  lora_dropout: 0.0
+  target_modules:
+  - q_proj
+  - k_proj
+  - v_proj
+  - o_proj
+  - gate_proj
+  - down_proj
+  - up_proj
+  task_type: CAUSAL_LM
+
+# trainer config
+batch_size: 8
+accumulate_grad_batches: 1
+max_epochs: 1
+lr: 3e-6
+warmup_ratio: 0.1
+scheduler: linear
+gradient_clip_val: 1.0
+
+# global config
+mode: train
+save_dir: save/lora
+seed: 1

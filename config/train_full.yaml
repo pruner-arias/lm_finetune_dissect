@@ -1,0 +1,22 @@
+# data config
+dataset: pubmed
+split: train
+max_token_length: 1024
+subset_examples: 1000
+
+# model config
+model: meta-llama/Llama-2-7b-hf
+
+# trainer config
+batch_size: 8
+accumulate_grad_batches: 1
+max_epochs: 1
+lr: 3e-6
+warmup_ratio: 0.1
+scheduler: linear
+gradient_clip_val: 1.0
+
+# global config
+mode: train
+save_dir: save/full
+seed: 1
